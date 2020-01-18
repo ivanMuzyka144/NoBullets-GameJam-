@@ -8,5 +8,6 @@ public class ShootInGirl : MonoBehaviour
     public void Shoot()
     {
         shoot.SetActive(true);
+        //
     }
 }
