@@ -42,10 +42,11 @@ GameObject:
   - component: {fileID: 1421684317143241368}
   - component: {fileID: 1345768711087815322}
   - component: {fileID: 5421995506292359865}
+  - component: {fileID: 7317774792216169198}
   - component: {fileID: 8357531692894452578}
   - component: {fileID: 6488706410540465745}
   - component: {fileID: 7992522673943478709}
-  - component: {fileID: 7317774792216169198}
+  - component: {fileID: 1698970913839739154}
   m_Layer: 0
   m_Name: Girl
   m_TagString: Player
@@ -138,6 +139,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &7317774792216169198
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977789690980716853}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.014018774}
+  m_Size: {x: 1.83, y: 3.081591}
+  m_Direction: 0
 --- !u!114 &8357531692894452578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,19 +196,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
---- !u!70 &7317774792216169198
-CapsuleCollider2D:
+--- !u!114 &1698970913839739154
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2977789690980716853}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.83, y: 3.39}
-  m_Direction: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7383899b48575b24184c023a704b289b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  climbingSpeed: 200

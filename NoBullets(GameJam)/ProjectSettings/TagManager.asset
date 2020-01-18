@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hideble
   - Ammunition
+  - Ladder
   layers:
   - Default
   - TransparentFX

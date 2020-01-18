@@ -20,6 +20,14 @@ public class Walk : MonoBehaviour
 
 	void Update()
 	{
+		if (Input.GetAxis("Horizontal") < 0)
+		{
+			transform.localScale = new Vector3(1, 1, 1);
+		}
+		else if (Input.GetAxis("Horizontal") > 0)
+		{
+			transform.localScale = new Vector3(-1, 1, 1);
+		}
 
 		if (GetComponent<GirlState>().state == GirlState.State.Walk)
 		{
@@ -45,14 +53,7 @@ public class Walk : MonoBehaviour
 			//animator.SetFloat("runSpeed", Mathf.Abs(rb.velocity.x));
 			//animator.SetFloat("jumpSpeed", rb.velocity.y);
 
-			if (rb.velocity.x < 0)
-			{
-				transform.localScale = new Vector3(1,1,1);
-			}
-			else if (rb.velocity.x > 0)
-			{
-				transform.localScale = new Vector3(-1, 1, 1);
-			}
+			
 		}
 	}
 
