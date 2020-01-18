@@ -8,7 +8,7 @@ public class CameraPoint : MonoBehaviour
     public Transform nextPoint;
     private bool startChange = false;
     public bool shouldChange = true;
-    public float speed = 10f;
+    public float speed = 12f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +30,7 @@ public class CameraPoint : MonoBehaviour
             if (Vector3.Distance(camera.transform.position, nextPoint.position) < 0.1f)
             {
                 camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10);
-                shouldChange = false;
+                GameObject.Destroy(gameObject);
             }
         }
     }
