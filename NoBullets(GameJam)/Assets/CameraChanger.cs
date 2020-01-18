@@ -8,8 +8,10 @@ public class CameraChanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        myCamera.GetComponent<Animator>().SetBool("ShouldMove", !(myCamera.GetComponent<Animator>().GetBool("ShouldMove")));
-        
+		if (collision.gameObject.tag == "Player")
+		{
+			myCamera.GetComponent<Animator>().SetBool("ShouldMove", !(myCamera.GetComponent<Animator>().GetBool("ShouldMove")));
+		}
     }
     
 }
