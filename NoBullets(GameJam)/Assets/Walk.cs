@@ -47,11 +47,11 @@ public class Walk : MonoBehaviour
 
 			if (rb.velocity.x < 0)
 			{
-				transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+				transform.localScale = new Vector3(1,1,1);
 			}
 			else if (rb.velocity.x > 0)
 			{
-				transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+				transform.localScale = new Vector3(-1, 1, 1);
 			}
 		}
 	}
