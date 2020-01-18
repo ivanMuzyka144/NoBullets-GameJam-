@@ -7,8 +7,6 @@ public class EnemyMovingScript : MonoBehaviour
     public Transform leftPoint;
     public Transform rightPoint;
 
-    public GameObject leftCollider;
-    public GameObject rightCollider;
 
     public float speed = 2f;
     public bool isGoToLeft = true;
@@ -24,8 +22,7 @@ public class EnemyMovingScript : MonoBehaviour
             if (Vector3.Distance(transform.position, leftPoint.position) < 0.001f)
             {
                 isGoToLeft = false;
-                leftCollider.SetActive(false);
-                rightCollider.SetActive(true);
+                gameObject.transform.localScale =  new Vector3(-1, 1,0);
             }
         }
         else
@@ -34,8 +31,7 @@ public class EnemyMovingScript : MonoBehaviour
             if (Vector3.Distance(transform.position, rightPoint.position) < 0.001f)
             {
                 isGoToLeft = true;
-                leftCollider.SetActive(true);
-                rightCollider.SetActive(false);
+                gameObject.transform.localScale = new Vector3(1, 1, 0);
             }
         }
     }
