@@ -78,7 +78,7 @@ public class Amunition : MonoBehaviour
             progress += speedOfProgress;
             if (progress > 105)
             {
-                GameObject.Destroy(circle);
+				circle.GetComponent<SpriteRenderer>().enabled=false;
                 Debug.Log("Destroyed!");
             }
         }
