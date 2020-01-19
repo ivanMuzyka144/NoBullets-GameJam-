@@ -14,7 +14,7 @@ public class EnemyMoving : MonoBehaviour
 	bool isSpotted = false;
 	float spottedTime;
 	Vector3 girlPosition;
-	public float chaseTime = 1f;
+	public float chaseTime = 3f;
 
 	void Update()
 	{
@@ -62,14 +62,16 @@ public class EnemyMoving : MonoBehaviour
 
 	public void SpotGirl(Vector3 position, float time)
 	{
+		FindObjectOfType<AudioManager>().Play("ChaseTheme");
 		isSpotted = true;
 		spottedTime = time;
 		girlPosition = position;
 		Debug.Log("RUNNING!");
 	}
+
 	public void RunToGirl()
 	{
-
+		
 		float step = speed * 2.5f * Time.deltaTime;
 
 		transform.position = Vector3.MoveTowards(transform.position, girlPosition, step);
@@ -84,6 +86,7 @@ public class EnemyMoving : MonoBehaviour
 		if (collision.gameObject.tag == "Player")
 		{
 			Physics2D.IgnoreCollision(collision.gameObject.GetComponent<CapsuleCollider2D>(), GetComponent<CapsuleCollider2D>());
+
 		}
 
 	}

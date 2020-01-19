@@ -38,7 +38,7 @@ public class LadderClimber : MonoBehaviour
 
 	void Update()
 	{
-		Debug.Log("Speed "+Input.GetAxis("Vertical"));
+		//Debug.Log("Speed "+Input.GetAxis("Vertical"));
 		if (inReach)
 		{
 			if (Input.GetAxis("Vertical") != 0)
