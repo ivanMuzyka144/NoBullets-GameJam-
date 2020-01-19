@@ -10,6 +10,7 @@ public class CameraChanger : MonoBehaviour
     {
 		if (collision.gameObject.tag == "Player")
 		{
+            Debug.Log("Triggered");
 			myCamera.GetComponent<Animator>().SetBool("ShouldMove", !(myCamera.GetComponent<Animator>().GetBool("ShouldMove")));
 		}
     }
