@@ -40,11 +40,11 @@ public class Walk : MonoBehaviour
 
 			if (Input.GetAxis("Horizontal") < 0)
 			{
-				transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+				transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 			}
 			else if (Input.GetAxis("Horizontal") > 0)
 			{
-				transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+				transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
 			}
 			//animator.SetFloat("runSpeed", Mathf.Abs(rb.velocity.x));
 			//animator.SetFloat("jumpSpeed", rb.velocity.y);

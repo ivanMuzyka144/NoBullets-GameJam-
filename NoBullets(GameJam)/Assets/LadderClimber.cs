@@ -49,10 +49,10 @@ public class LadderClimber : MonoBehaviour
 				if (l!=null)
 				{
 					if(l.left)
-						transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+						transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
 					else
 					{
-						transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+						transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 					}
 				}
 				

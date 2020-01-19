@@ -16,8 +16,11 @@ public class EnemyMoving : MonoBehaviour
 	Vector3 girlPosition;
 	public float chaseTime = 3f;
 
+	float step;
+
 	void Update()
 	{
+
 		if (!isSpotted)
 		{
 			PatrolArea();
@@ -36,26 +39,42 @@ public class EnemyMoving : MonoBehaviour
 
 	}
 
+	void RotateToTarget(Vector2 target)
+	{
+		if (transform.position.x - target.x > 0)
+		{
+			transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+		}
+		else
+		{
+			transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+		}
+	}
+
 	void PatrolArea()
 	{
-		float step = speed * Time.deltaTime;
+		step = speed * Time.deltaTime;
+		GetComponent<Animator>().SetBool("isWalking", true);
+		GetComponent<Animator>().SetBool("isRunning", false);
 
 		if (isGoToLeft)
 		{
+			RotateToTarget(leftPoint.position);
 			transform.position = Vector3.MoveTowards(transform.position, leftPoint.position, step);
-			if (Vector3.Distance(transform.position, leftPoint.position) < 0.1f)
+			if (Vector3.Distance(transform.position, leftPoint.position) <4f)
 			{
 				isGoToLeft = false;
-				gameObject.transform.localScale = new Vector3(-1, 1, 0);
+			
 			}
 		}
 		else
 		{
+			RotateToTarget(rightPoint.position);
 			transform.position = Vector3.MoveTowards(transform.position, rightPoint.position, step);
-			if (Vector3.Distance(transform.position, rightPoint.position) < 0.1f)
+			if (Vector3.Distance(transform.position, rightPoint.position) < 4f)
 			{
 				isGoToLeft = true;
-				gameObject.transform.localScale = new Vector3(1, 1, 0);
+				
 			}
 		}
 	}
@@ -71,13 +90,14 @@ public class EnemyMoving : MonoBehaviour
 
 	public void RunToGirl()
 	{
-		
-		float step = speed * 2.5f * Time.deltaTime;
+		GetComponent<Animator>().SetBool("isWalking", false);
+		GetComponent<Animator>().SetBool("isRunning", true);
+		step = speed * 2.5f * Time.deltaTime;
 
 		transform.position = Vector3.MoveTowards(transform.position, girlPosition, step);
 		if (Vector3.Distance(transform.position, girlPosition) < 3f)
 		{
-			gameObject.transform.localScale = new Vector3(-1, 1, 0);
+			RotateToTarget(girlPosition);
 		}
 	}
 
