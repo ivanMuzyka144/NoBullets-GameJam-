@@ -12,6 +12,7 @@ public class CameraChanger : MonoBehaviour
 		{
             Debug.Log("Triggered");
 			myCamera.GetComponent<Animator>().SetBool("ShouldMove", !(myCamera.GetComponent<Animator>().GetBool("ShouldMove")));
+			GameObject.Destroy(gameObject);
 		}
     }
     

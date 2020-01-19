@@ -9,25 +9,22 @@ public class Walk : MonoBehaviour
 	private bool isGrounded = true;
 	private float xDisplacement;
 
-	public float fallMultiplier = 2.5f;
-	public float lowJumpMultiplier = 2f;
 	public float jumpSpeed = 200;
+
+	Animator animator;
 
 	void Start()
 	{
+		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D>();
 	}
 
 	void Update()
 	{
-		if (Input.GetAxis("Horizontal") < 0)
-		{
-			transform.localScale = new Vector3(1, 1, 1);
-		}
-		else if (Input.GetAxis("Horizontal") > 0)
-		{
-			transform.localScale = new Vector3(-1, 1, 1);
-		}
+		
+
+		animator.SetFloat("HorizontalSpeed", Mathf.Abs(rb.velocity.x));
+		animator.SetFloat("VerticalSpeed", rb.velocity.y);
 
 		if (GetComponent<GirlState>().state == GirlState.State.Walk)
 		{
@@ -38,28 +35,27 @@ public class Walk : MonoBehaviour
 			{
 				rb.AddForce(new Vector2(0, jumpSpeed));
 				isGrounded = false;
+				
 			}
 
-
-			if (rb.velocity.y < 0)
+			if (Input.GetAxis("Horizontal") < 0)
 			{
-				rb.velocity += Vector2.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+				transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
 			}
-			else if (rb.velocity.y > 0 && !Input.GetButton("Jump"))
+			else if (Input.GetAxis("Horizontal") > 0)
 			{
-				rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+				transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
 			}
-
 			//animator.SetFloat("runSpeed", Mathf.Abs(rb.velocity.x));
 			//animator.SetFloat("jumpSpeed", rb.velocity.y);
 
-			
+
 		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
 	{
-		//animator.SetTrigger("grounded");
+		animator.SetBool("isGrounded", true);
 		isGrounded = true;
 	}
 }

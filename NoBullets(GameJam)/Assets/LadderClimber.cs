@@ -9,7 +9,6 @@ public class LadderClimber : MonoBehaviour
 
 	public float climbingSpeed = 200f;
 
-
 	void Start()
 	{
 
@@ -38,26 +37,37 @@ public class LadderClimber : MonoBehaviour
 
 	void Update()
 	{
-		//Debug.Log("Speed "+Input.GetAxis("Vertical"));
+		
 		if (inReach)
 		{
 			if (Input.GetAxis("Vertical") != 0)
 			{
 				GetComponent<Rigidbody2D>().velocity = new Vector2(0, Input.GetAxis("Vertical") * climbingSpeed * Time.deltaTime);
 				GetComponent<Rigidbody2D>().gravityScale = 0;
-				//GetComponent<GirlState>().SetClimbing();
-
+				GetComponent<GirlState>().SetClimbing();
+				Ladder l = ladder.GetComponent<Ladder>();
+				if (l!=null)
+				{
+					if(l.left)
+						transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+					else
+					{
+						transform.rotation = Quaternion.AngleAxis(0, Vector3.up);
+					}
+				}
+				
 			}
 
 		}
 		else
 		{
 			GetComponent<Rigidbody2D>().gravityScale = 1;
+			GetComponent<GirlState>().SetWalk();
 		}
 		if (Input.GetButtonDown("Jump"))
 		{
 			GetComponent<GirlState>().SetWalk();
-
+			
 		}
 	}
 }

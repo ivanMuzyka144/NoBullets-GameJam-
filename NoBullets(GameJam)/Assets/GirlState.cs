@@ -20,18 +20,21 @@ public class GirlState : MonoBehaviour
 
 	public void SetWalk()
 	{
+		GetComponent<Animator>().SetBool("isHiding", false);
+		GetComponent<Animator>().SetBool("isClimbing", false);
 		state = State.Walk;
 		GetComponent<Rigidbody2D>().gravityScale = 1;
-		GetComponent<SpriteRenderer>().color = Color.white;
+		
 	}
 	public void SetHide()
 	{
 		state = State.Hide;
-		GetComponent<SpriteRenderer>().color = Color.grey;
+		GetComponent<Animator>().SetBool("isHiding", true);
 		GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 	}
 	public void SetClimbing()
 	{
+		GetComponent<Animator>().SetBool("isClimbing", true);
 		state = State.Climb;
 		GetComponent<Rigidbody2D>().gravityScale = 0;
 

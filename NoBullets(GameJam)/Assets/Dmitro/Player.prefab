@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 4208579441076973693}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -593,8 +593,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12794288, y: 9.513381}
-  m_Size: {x: 8.098433, y: 15.808603}
+  m_Offset: {x: -0.18853994, y: 10.482003}
+  m_Size: {x: 5.9169407, y: 13.871366}
   m_Direction: 0
 --- !u!50 &5883244092048999114
 Rigidbody2D:
@@ -643,8 +643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 400
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
   jumpSpeed: 200
 --- !u!114 &144147795405777909
 MonoBehaviour:

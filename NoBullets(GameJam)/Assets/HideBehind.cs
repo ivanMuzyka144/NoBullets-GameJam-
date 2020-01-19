@@ -29,20 +29,17 @@ public class HideBehind : MonoBehaviour
 		if (inReach) {
 			if (Input.GetKeyDown(KeyCode.E))
 			{
+				Debug.Log(GetComponent<GirlState>().state);
 				if (GetComponent<GirlState>().state == GirlState.State.Walk)
 				{
-					GetComponent<SpriteRenderer>().color = Color.grey;
-					GetComponent<GirlState>().state = GirlState.State.Hide;
-					GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
+					GetComponent<GirlState>().SetHide();
 					MoveToHide();
 
 				}
 
 				else if (GetComponent<GirlState>().state == GirlState.State.Hide)
 				{
-					GetComponent<SpriteRenderer>().color = Color.white;
-					GetComponent<GirlState>().state = GirlState.State.Walk;
+					GetComponent<GirlState>().SetWalk();
 				}
 			}
 
