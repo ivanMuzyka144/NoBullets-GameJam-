@@ -10,12 +10,15 @@ public class SuspiciousTrigger : MonoBehaviour
         
     }
 
-    void OnTriggerStay2D(Collider2D collision)
+	void OnTriggerEnter2D(Collider2D collision)
 	{
 		if (collision.gameObject.tag == "Player")
 		{
-			if(collision.gameObject.GetComponent<GirlState>().state != GirlState.State.Hide)
+			if (collision.gameObject.GetComponent<GirlState>().state != GirlState.State.Hide)
+			{
 				transform.GetComponentInParent<EnemyMoving>().SpotGirl(collision.gameObject.transform.position, Time.time);
+				
+			}
 		}
 	}
 }
